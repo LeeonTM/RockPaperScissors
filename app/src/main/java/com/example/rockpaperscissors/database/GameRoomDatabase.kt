@@ -4,9 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.rockpaperscissors.database.converters.DateConverter
+import com.example.rockpaperscissors.database.converters.MoveConverter
+import com.example.rockpaperscissors.database.converters.ResultConverter
 import com.example.rockpaperscissors.models.Game
 
 @Database(entities = [Game::class], version = 1, exportSchema = false)
+@TypeConverters(DateConverter::class, MoveConverter::class, ResultConverter::class)
 abstract class GameRoomDatabase: RoomDatabase() {
     abstract fun gameDao(): GameDao
 
